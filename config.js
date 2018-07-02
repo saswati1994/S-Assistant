@@ -16,6 +16,10 @@ var datapoints={
         {
         name:"abhilash",
             mail:"abhilashs@suntechnologies.com"
+        },
+        {
+        name:"syed",
+            mail:"abhilashs@suntechnologies.com"
         }
     ]
     
