@@ -119,7 +119,7 @@ function locationhandler(request,response){
   Reversegeocode(lat,long,(err,data)=>{
         console.log(data.results[4].address_components[0].long_name+"+"+data.results[4].address_components[1].long_name);
         console.log(request.body.queryResult.outputContexts[1]);
-        var MapUrl = "https://www.google.com/maps/search/?api=1&query="+request.body.queryResult.outputContexts[1].parameters.poi+"+"+data.results[1].address_components[1].long_name+"+"+data.results[4].address_components[1].long_name;
+        var MapUrl = "https://www.google.com/maps/search/?api=1&query="+request.body.queryResult.outputContexts[1].parameters.poi+"+"+data.results[1].address_components[1].long_name+"+"+data.results[2].address_components[1].long_name;
         console.log(MapUrl);
         var formatedResponse = responseFormator(MapUrl);
         response.send(formatedResponse);
