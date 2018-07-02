@@ -2,7 +2,7 @@ var datapoints={
 
     mailids:[
         {
-            name:"tahir",
+            name:"Tahir",
             mail:"tahiri@suntechnologies.com"
         },
         {
