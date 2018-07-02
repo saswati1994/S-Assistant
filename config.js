@@ -19,7 +19,7 @@ var datapoints={
         },
         {
         name:"syed",
-            mail:"abhilashs@suntechnologies.com"
+            mail:"syedv@suntechnologies.com"
         }
     ]
     
