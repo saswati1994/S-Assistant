@@ -116,11 +116,15 @@ function locationhandler(request,response){
   //   response.send(formatedResponse);
 
   // })
-    console.log(request.body.queryResult.outputContexts[1]);
-    var MapUrl = "https://www.google.com/maps/search/?api=1&query="+request.body.queryResult.outputContexts[1].parameters.poi;
-    console.log(MapUrl);
-    var formatedResponse = responseFormator(MapUrl);
-    response.send(formatedResponse);
+  Reversegeocode(lat,long,(err,data)=>{
+        console.log(data.results[4].address_components[0].long_name+"+"+data.results[4].address_components[1].long_name);
+        console.log(request.body.queryResult.outputContexts[1]);
+        var MapUrl = "https://www.google.com/maps/search/?api=1&query="+request.body.queryResult.outputContexts[1].parameters.poi+"+"+data.results[4].address_components[0].long_name+"+"+data.results[4].address_components[1].long_name;
+        console.log(MapUrl);
+        var formatedResponse = responseFormator(MapUrl);
+        response.send(formatedResponse);
+      })
+    
 }
 
 
@@ -161,6 +165,30 @@ function responseFormator(ResponseText){
 // });
 
 // }
+
+function Reversegeocode(lat,long,callback){
+
+  var options = { 
+        method: 'GET',
+        url: "https://maps.googleapis.com/maps/api/geocode/json?" ,
+        qs: 
+        { latlng: lat+","+long,
+          key: 'AIzaSyAPEp-nSzbgXSRGF1Hj0hzkPKevn3vf4z8' },
+        headers: 
+        { 'Cache-Control': 'no-cache' } 
+      };
+
+
+      request(options, function (error, response, body) {
+            if (error){
+              // console.log(error);
+              callback(error,null);
+            }else{
+              // console.log(body);
+              callback(null,JSON.parse(body));
+            }    
+        });
+      }
 
 
 
