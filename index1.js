@@ -103,13 +103,18 @@ function locationhandler(request,response){
       var place={
          "lat": element.geometry.location.lat,
        "long": element.geometry.location.lng,
-        "targetname": element.name
+        "targetname": element.name,
+        "opennow" : element.opening_hours.open_now
        }
-        console.log(place
+        console.log(place);
       targets.push(place);
     });
 
-    //console.log(targets);
+    console.log(targets);
+     var textresponse;
+     for(i=0;i<=4:i++){
+       textresponse = targets[0].targetname +"-" + targets[0]
+     }
      //var MapUrl = "https://www.google.com/maps/search/?api=1&query="+targets[0].lat+","+targets[0].long;
      //console.log(MapUrl);
      //var formatedResponse = responseFormator(MapUrl);
