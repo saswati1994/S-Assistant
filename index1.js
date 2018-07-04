@@ -138,7 +138,7 @@ function responseFormator(ResponseText){
 }
 
 
-// function NearbyPalceSearch(lat,long,callback){
+function NearbyPalceSearch(lat,long,callback){
 
    var options = { 
      method: 'GET',
