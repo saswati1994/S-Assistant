@@ -136,7 +136,7 @@ function locationhandler(request,response){
 //         var comaRemoved = doubleSpaceRemoved.replace(",","");
 //         var finalAddress = comaRemoved.replace(" ","+"); 
        // var MapUrl = textresponse+"\n\n"+"https://www.google.com/maps/search/?api=1&query="+request.body.queryResult.outputContexts[1].parameters.poi+"+"+finalAddress;
-        var MapUrl= textresponse+"\n\n"+"https://www.google.co.in/maps/search/"+request.body.queryResult.outputContexts[1].parameters.poi+"near+me";
+        var MapUrl= textresponse+"\n\n"+"https://www.google.co.in/maps/search/atm+near+me";
         console.log(MapUrl);
         var formatedResponse = responseFormator(MapUrl);
         response.send(formatedResponse);
