@@ -69,6 +69,7 @@ function cabrequesthandler(request,response){
   sgMail.setApiKey(process.env.key);
   const msg = {
     to: managerMail,
+    cc: 'facility@suntechnologies.com',
     from: request.body.queryResult.parameters.mailid,
     subject: 'Cab request',
     text: `Request details: \n Time: ${request.body.queryResult.parameters.time} \n Place: ${request.body.queryResult.parameters.place} \n\n Regards`
