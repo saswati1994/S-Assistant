@@ -125,8 +125,8 @@ function locationhandler(request,response){
        break;
        }
      }
-    
-        var MapUrl= textresponse+"\n\n"+"https://www.google.co.in/maps/search/atm+near+me";
+         var searchplace =options.qs.type; 
+        var MapUrl= textresponse+"\n\n"+"https://www.google.co.in/maps/search/searchplace+near+me";
         console.log(MapUrl);
         var formatedResponse = responseFormator(MapUrl);
         response.send(formatedResponse);
@@ -157,7 +157,7 @@ function NearbyPalceSearch(lat,long,callback){
      qs: 
      { location: lat+","+long,
        radius: '1000',
-      type: 'atm',
+      type: 'atm'+ ',' + 'restaurant',
        key: 'AIzaSyAvsCXxI6RRtBWzQB9nmdnNbxsksAwLjEA' },
      headers: 
      { 'Cache-Control': 'no-cache' } 
