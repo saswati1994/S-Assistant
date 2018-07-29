@@ -170,7 +170,7 @@ function NearbyPalceSearch(lat,long,search,callback){
        // console.log(error);
        callback(error,null);
     }else{
-      // console.log(body);
+       console.log(body);
        callback(null,body);
      }
 
