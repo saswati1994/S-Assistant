@@ -125,7 +125,7 @@ function locationhandler(request,response){
        break;
        }
      }
-         var searchplace =request.body.queryResult.parameters.nearby; 
+         var searchplace =request.body.queryResult.outputContexts[0].parameters.poi; 
         var MapUrl= textresponse+"\n\n"+"https://www.google.co.in/maps/search/searchplace+near+me";
         console.log(MapUrl);
         var formatedResponse = responseFormator(MapUrl);
@@ -157,7 +157,7 @@ function NearbyPalceSearch(lat,long,callback){
      qs: 
      { location: lat+","+long,
        radius: '1000',
-      type: request.body.queryResult.parameters.nearby,
+      type: request.body.queryResult.outputContexts[0].parameters.poi,
        key: 'AIzaSyAvsCXxI6RRtBWzQB9nmdnNbxsksAwLjEA' },
      headers: 
      { 'Cache-Control': 'no-cache' } 
