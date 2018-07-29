@@ -125,6 +125,7 @@ function locationhandler(request,response){
        break;
        }
      }
+       console.log(request.body);
          var searchplace =request.body.queryResult.outputContexts[0].parameters.poi; 
         var MapUrl= textresponse+"\n\n"+"https://www.google.co.in/maps/search/searchplace+near+me";
         console.log(MapUrl);
