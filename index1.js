@@ -99,7 +99,7 @@ function locationhandler(request,response){
   
 
     var parsedData= JSON.parse(data); 
-
+console.log(parsedData.results[0]);
      parsedData.results.forEach(element => {
       
       var place={
@@ -170,7 +170,7 @@ function NearbyPalceSearch(lat,long,search,callback){
        // console.log(error);
        callback(error,null);
     }else{
-       console.log(body);
+       //console.log(body);
        callback(null,body);
      }
 
