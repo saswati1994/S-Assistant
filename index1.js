@@ -90,7 +90,7 @@ function locationhandler(request,response){
   console.log(long);
   var targets=[];
   var search = request.body.queryResult.outputContexts[0].parameters.poi;
-   NearbyPalceSearch(lat,long,search(err,data)=>{
+   NearbyPalceSearch(lat,long,search,(err,data)=>{
 
      if(err){
       console.log("Error in Google maps API call",err)
