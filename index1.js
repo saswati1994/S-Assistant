@@ -125,7 +125,6 @@ function locationhandler(request,response){
        break;
        }
      }
-       console.log(request.body);
          var searchplace =request.body.queryResult.outputContexts[0].parameters.poi; 
         var MapUrl= textresponse+"\n\n"+"https://www.google.co.in/maps/search/searchplace+near+me";
         console.log(MapUrl);
@@ -152,6 +151,7 @@ function responseFormator(ResponseText){
 
 function NearbyPalceSearch(lat,long,callback){
 
+   console.log(request.body);
    var options = { 
      method: 'GET',
      url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
