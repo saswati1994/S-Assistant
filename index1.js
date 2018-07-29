@@ -89,7 +89,8 @@ function locationhandler(request,response){
   console.log(lat);
   console.log(long);
   var targets=[];
-   NearbyPalceSearch(lat,long,(err,data)=>{
+  var search = request.body.queryResult.outputContexts[0].parameters.poi;
+   NearbyPalceSearch(lat,long,search(err,data)=>{
 
      if(err){
       console.log("Error in Google maps API call",err)
@@ -125,7 +126,7 @@ function locationhandler(request,response){
        break;
        }
      }
-         var searchplace =request.body.queryResult.outputContexts[0].parameters.poi; 
+         var searchplace =search; 
         var MapUrl= textresponse+"\n\n"+"https://www.google.co.in/maps/search/searchplace+near+me";
         console.log(MapUrl);
         var formatedResponse = responseFormator(MapUrl);
@@ -149,16 +150,16 @@ function responseFormator(ResponseText){
 }
 
 
-function NearbyPalceSearch(lat,long,callback){
+function NearbyPalceSearch(lat,long,search,callback){
 
-   console.log(request.body);
+   
    var options = { 
      method: 'GET',
      url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
      qs: 
      { location: lat+","+long,
        radius: '1000',
-      type: request.body.queryResult.outputContexts[0].parameters.poi,
+      type: search,
        key: 'AIzaSyAvsCXxI6RRtBWzQB9nmdnNbxsksAwLjEA' },
      headers: 
      { 'Cache-Control': 'no-cache' } 
