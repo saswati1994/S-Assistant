@@ -15,7 +15,7 @@ app.get('/', function(request, response) {
 app.post('/webhook',function(request,response){
   
   
-  console.log("printing message",request.body);
+//   console.log("printing message",request.body);
    
   if(request.body.queryResult.intent.displayName=="Cab Request"){
       
@@ -81,7 +81,7 @@ function cabrequesthandler(request,response){
 
 function locationhandler(request,response){
 
-  console.log(JSON.stringify(request.body));
+//   console.log(JSON.stringify(request.body));
   console.log(request.body.originalDetectIntentRequest.payload.data);
   var lat = request.body.originalDetectIntentRequest.payload.data.postback.data.lat;
   var long = request.body.originalDetectIntentRequest.payload.data.postback.data.long;
@@ -89,7 +89,9 @@ function locationhandler(request,response){
   console.log(lat);
   console.log(long);
   var targets=[];
-  var search = request.body.queryResult.outputContexts[0].parameters.poi;
+  console.log(request.body.queryResult.outputContexts[1].parameters)
+  var search = request.body.queryResult.outputContexts[1].parameters.poi;
+  console.log("SEARCH PARAMETER",search);
    NearbyPalceSearch(lat,long,search,(err,data)=>{
 
      if(err){
@@ -99,12 +101,12 @@ function locationhandler(request,response){
   
 
     var parsedData= JSON.parse(data); 
-console.log(parsedData.results[0]);
+//     console.log("TEST DATA",parsedData.results[0]);
      parsedData.results.forEach(element => {
-      
+      console.log(element.opening_hours);
       var place={
          "lat": element.geometry.location.lat,
-       "long": element.geometry.location.lng,
+        "long": element.geometry.location.lng,
         "targetname": element.name,
         "opennow" : element.opening_hours.open_now
        }
@@ -126,7 +128,7 @@ console.log(parsedData.results[0]);
        break;
        }
      }
-         var searchplace =search; 
+        var searchplace = search; 
         var MapUrl= textresponse+"\n\n"+"https://www.google.co.in/maps/search/searchplace+near+me";
         console.log(MapUrl);
         var formatedResponse = responseFormator(MapUrl);
@@ -178,5 +180,3 @@ function NearbyPalceSearch(lat,long,search,callback){
  });
 
  }
-
-
